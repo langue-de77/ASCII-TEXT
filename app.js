@@ -7,7 +7,7 @@ const foregroundChar = document.getElementById("foreground_char");
 const button = document.getElementById("convert-btn");
 button.addEventListener("click", () => {
   const newChars = [backgroundChar.value, foregroundChar.value];
-  if (newChars[0] && newChars[1]) setChars(newChars);
+  if (newChars[0] || newChars[1]) setChars(newChars);
   updateOutput();
 });
 
