@@ -16,8 +16,19 @@ button.addEventListener("click", () => {
   updateOutput();
 });
 
+// ページ読み込み時に即実行
+loadSupportedChars();
+
 async function updateOutput() {
-  const asciiText = await textToAscii(input.value);
+  // SUPPORTED_CHARSがまだ空の場合は待機する
+  if (SUPPORTED_CHARS.size === 0) await loadSupportedChars();
+
+  const errorMessage = validate(input.value.toUpperCase());
+  if (errorMessage) {
+    output.value = errorMessage;
+    return;
+  }
+  const asciiText = await textToAscii(input.value.toUpperCase());
   const mode = document.querySelector("input[name='mode']:checked").value;
   output.value = generateOutput(asciiText, mode);
 }
@@ -114,4 +125,27 @@ function generateOutput(asciiText, mode = "h") {
 
   // 各行を改行で結合して1つの文字列にして返す
   return text.map((line) => line.join("\n")).join("\n");
+}
+
+// 起動時にmanifest.jsonから使用可能文字を取得する
+let SUPPORTED_CHARS = new Set();
+
+async function loadSupportedChars() {
+  const response = await fetch("./data/manifest.json");
+  const chars = await response.json();
+  SUPPORTED_CHARS = new Set(chars);
+}
+
+// 使用不可能な文字を検出して，エラーメッセージを返す
+// 問題なければ null を返す
+function validate(text) {
+  const unsupported = [
+    ...new Set(
+      text.split("").filter((c) => c !== "\n" && !SUPPORTED_CHARS.has(c)),
+    ),
+  ];
+  if (unsupported.length === 0) return null;
+
+  const supported = [...SUPPORTED_CHARS].filter((c) => c !== " ").join(" ");
+  return `使用できない文字が含まれています： ${unsupported.join(" ")}\n使用できる文字： ${supported} スペース`;
 }
