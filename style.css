@@ -1,0 +1,59 @@
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  margin: auto;
+  padding: 10px 0;
+  text-align: center;
+  position: relative;
+  background-color: #9b90c2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  border: 1px solid black;
+  background-color: white;
+  width: 80vw;
+  margin: 0 10px 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+button {
+  font-size: 1.5vw;
+  margin: 10px 0 0;
+  cursor: pointer;
+}
+
+.radio-label {
+  cursor: pointer;
+}
+
+textarea {
+  width: 49.8%;
+  font-size: 1.5vw;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: none;
+  overflow: hidden;
+}
+#input {
+  width: 100%;
+  height: 15vh;
+}
+#output {
+  width: 100%;
+  height: 50vh;
+  font-size: 0.5vw;
+  overflow: visible;
+  white-space: pre;
+}

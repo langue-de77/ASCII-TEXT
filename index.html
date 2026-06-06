@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ASCII TEXT</title>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="icon" href="./img/favicon.ico" sizes="any" />
+  </head>
+  <body>
+    <main class="centered">
+      <section class="container">
+        <h1>ASCII TEXT</h1>
+      </section>
+      <section id="input_container" class="container">
+        <textarea
+          id="input"
+          placeholder="変換する文字列"
+          autofocus="on"
+          cols="50"
+          rows="15"
+        ></textarea>
+        <div id="char_container">
+          <textarea id="background_char" placeholder="背景文字"></textarea>
+          <textarea id="foreground_char" placeholder="主文字"></textarea>
+        </div>
+      </section>
+      <section id="mode_container" class="container">
+        <div id="mode_label">
+          変換モード:
+          <label class="radio-label">
+            <input type="radio" name="mode" value="h" checked /> 横書き
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="mode" value="v" /> 縦書き
+          </label>
+        </div>
+        <button id="convert-btn" onclick="updateOutput()">変換</button>
+      </section>
+      <section id="output_container" class="container">
+        <textarea
+          id="output"
+          placeholder="変換後の文字列"
+          cols="50"
+          rows="15"
+          readonly
+        ></textarea>
+      </section>
+      <section id="results_container"></section>
+      <p>&copy; 2026 blackbear</p>
+    </main>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
