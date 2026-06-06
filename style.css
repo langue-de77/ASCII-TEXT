@@ -40,6 +40,7 @@ button {
 
 textarea {
   width: 49.8%;
+  height: 7vh;
   font-size: 1.5vw;
   padding: 10px;
   box-sizing: border-box;
