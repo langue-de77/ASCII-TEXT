@@ -6,8 +6,13 @@ const foregroundChar = document.getElementById("foreground_char");
 
 const button = document.getElementById("convert-btn");
 button.addEventListener("click", () => {
-  const newChars = [backgroundChar.value, foregroundChar.value];
-  if (newChars[0] || newChars[1]) setChars(newChars);
+  const newChars = [
+    backgroundChar.value != "" ? backgroundChar.value : "0",
+    foregroundChar.value != "" ? foregroundChar.value : "1",
+  ];
+  if (newChars[0] !== usedChars[0] || newChars[1] !== usedChars[1]) {
+    setChars(newChars);
+  }
   updateOutput();
 });
 
@@ -37,9 +42,9 @@ async function loadData(char) {
     cache[char] = content.split("\n").map((line) =>
       line
         .trim()
-        // ファイル内の '0','1' を usedChars の文字に置換
-        .replace(/0/g, usedChars[0])
-        .replace(/1/g, usedChars[1])
+        .split("")
+        .map((c) => (c === "0" ? usedChars[0] : c === "1" ? usedChars[1] : c))
+        .join("")
         .split(" "),
     );
   }
