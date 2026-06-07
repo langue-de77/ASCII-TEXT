@@ -131,7 +131,7 @@ function generateOutput(asciiText, mode = "h") {
 let SUPPORTED_CHARS = new Set();
 
 async function loadSupportedChars() {
-  const response = await fetch("./data/manifest.json");
+  const response = await fetch("./data/_manifest.json");
   const chars = await response.json();
   SUPPORTED_CHARS = new Set(chars);
 }
