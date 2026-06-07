@@ -147,5 +147,5 @@ function validate(text) {
   if (unsupported.length === 0) return null;
 
   const supported = [...SUPPORTED_CHARS].filter((c) => c !== " ").join(" ");
-  return `使用できない文字が含まれています： ${unsupported.join(" ")}\n使用できる文字： ${supported} スペース`;
+  return `使用できない文字が含まれています： ${unsupported.join(" ")}\n使用できる文字： ${supported} 半角スペース`;
 }
