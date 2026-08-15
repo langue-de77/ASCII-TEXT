@@ -91,4 +91,4 @@ cd ascii-text
 
 ## ライセンス
 
-&copy; 2026 blackbear
+&copy; 2026 187
